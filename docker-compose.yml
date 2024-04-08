@@ -1,0 +1,13 @@
+version: "3.9"
+services:
+  nginx:
+    build:
+      context: ./nginx/
+      args:
+        - FASTCGI_PASS=php-app:9000
+    ports:
+      - 80:8080
+  php-app:
+    build: ./php-app/
+    expose:
+      - 9000
